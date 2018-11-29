@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { TutorialPageModule } from "../pages/tutorial/tutorial.module";
 
 import { HttpModule } from '@angular/http';
+import { TabsPageModule } from "../pages/tabs/tabs.module";
+import { CadastrarPage } from "../pages/cadastrar/cadastrar";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     TutorialPageModule,
-    HttpModule
+    HttpModule,
+    TabsPageModule,
+    CadastrarPage
   ],
   bootstrap: [IonicApp],
   entryComponents: [

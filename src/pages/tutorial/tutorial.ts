@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from "../home/home";
-
-/**
- * Generated class for the TutorialPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TabsPage } from "../tabs/tabs";
 
 @IonicPage()
 @Component({
@@ -40,6 +33,6 @@ export class TutorialPage {
 
   /* Método responsável por dar skip no slide de tutorial */
   skipTutorial() {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(TabsPage);
   }
 }
