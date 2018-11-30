@@ -1,15 +1,14 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>cadastrar</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
   <ion-list>
-
+    <ion-list-header>
+      Cadastro
+    </ion-list-header>
     <ion-item>
       <ion-label floating>Nome</ion-label>
       <ion-input type="text"></ion-input>
@@ -25,24 +24,26 @@
     </ion-item>
     <ion-item>
       <ion-label floating>CEP</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input [(ngModel)]="cep" type="text" (keyup)="fillAddress()" maxlength="8"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Logradouro</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" value="{{ logradouro }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Bairro</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" value="{{ bairro }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Cidade</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" value="{{ cidade }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Estado</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" value="{{ estado }}"></ion-input>
     </ion-item>
-
   </ion-list>
+  <div padding>
+    <button ion-button color="dark" block (click)="createAccount()">Registrar</button>
+  </div>
 </ion-content>

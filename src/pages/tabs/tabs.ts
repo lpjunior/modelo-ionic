@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from "../home/home";
 import { CadastrarPage } from "../cadastrar/cadastrar";
+import { ListAddressesPage } from "../list-addresses/list-addresses";
 
 /**
  * Generated class for the TabsPage page.
@@ -18,10 +19,12 @@ import { CadastrarPage } from "../cadastrar/cadastrar";
 export class TabsPage {
   tab1: any;
   tab2: any;
+  tab3: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.tab1 = HomePage;
     this.tab2 = CadastrarPage;
+    this.tab3 = ListAddressesPage;
   }
 
   ionViewDidLoad() { }

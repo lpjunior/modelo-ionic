@@ -10,7 +10,9 @@ import { TutorialPageModule } from "../pages/tutorial/tutorial.module";
 
 import { HttpModule } from '@angular/http';
 import { TabsPageModule } from "../pages/tabs/tabs.module";
-import { CadastrarPage } from "../pages/cadastrar/cadastrar";
+import { CadastrarPageModule } from "../pages/cadastrar/cadastrar.module";
+import { WebserviceCorreiosProvider } from '../providers/webservice-correios/webservice-correios';
+import { ListAddressesPageModule } from "../pages/list-addresses/list-addresses.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CadastrarPage } from "../pages/cadastrar/cadastrar";
     TutorialPageModule,
     HttpModule,
     TabsPageModule,
-    CadastrarPage
+    CadastrarPageModule,
+    ListAddressesPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,7 +36,8 @@ import { CadastrarPage } from "../pages/cadastrar/cadastrar";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WebserviceCorreiosProvider
   ]
 })
 export class AppModule {}
