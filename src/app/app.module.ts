@@ -13,6 +13,7 @@ import { TabsPageModule } from "../pages/tabs/tabs.module";
 import { CadastrarPageModule } from "../pages/cadastrar/cadastrar.module";
 import { WebserviceCorreiosProvider } from '../providers/webservice-correios/webservice-correios';
 import { ListAddressesPageModule } from "../pages/list-addresses/list-addresses.module";
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ListAddressesPageModule } from "../pages/list-addresses/list-addresses.
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    WebserviceCorreiosProvider
+    WebserviceCorreiosProvider,
+    UserProvider
   ]
 })
 export class AppModule {}

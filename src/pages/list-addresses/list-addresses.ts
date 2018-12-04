@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { WebserviceCorreiosProvider } from "../../providers/webservice-correios/webservice-correios";
 
 /**
  * Generated class for the ListAddressesPage page.
@@ -12,6 +13,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-list-addresses',
   templateUrl: 'list-addresses.html',
+  providers: [
+    WebserviceCorreiosProvider
+  ]
 })
 export class ListAddressesPage {
 
@@ -19,10 +23,27 @@ export class ListAddressesPage {
   private txtCidade:string;
   private txtLogradouro:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  enderecos = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private wsCProvider: WebserviceCorreiosProvider) {
   }
 
   ionViewDidLoad() {
   }
 
+  ListAddressesPage() {
+    if((this.txtUF.length == 2) && (this.txtCidade.length >= 5) && (this.txtLogradouro.length >= 3)) {
+
+      this.wsCProvider.locateAddressByData(this.txtUF, this.txtCidade, this.txtLogradouro).subscribe(
+        data=>{
+          let resultado = (data as any)._body;
+          let json = JSON.parse(resultado);
+          this.enderecos = json;
+        },
+        error=>{
+          console.log((error as any)._body);
+        }
+      );
+    }
+  }
 }
