@@ -56,7 +56,7 @@ export class CadastrarPage {
  createAccount() {
     this.usrPvr.setUser(this.nome, this.email, this.telefone)
       .then((result: any) => {
-        this.toast.create({ message: 'Usuário criado com sucesso. Token: ' + result.token, position: 'botton', duration: 3000 }).present();
+        this.toast.create({ message: 'Usuário criado com sucesso. ', position: 'botton', duration: 3000 }).present();
       })
       .catch((error: any) => {
         this.toast.create({ message: 'Erro ao criar o usuário. Erro: ' + error.error, position: 'botton', duration: 3000 }).present();
