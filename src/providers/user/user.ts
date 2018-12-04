@@ -1,17 +1,32 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the UserProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UserProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello UserProvider Provider');
+  private BASE_PATH = "http://localhost:8080/webservice/users/";
+  constructor(public http: Http) { }
+
+  getUserinfo(id:number) {
+    return this.http.get(this.BASE_PATH + 'id?' + id);
   }
 
+  setUser(nome:string, email:string, telefone:string) {
+    return new Promise((resolve, reject) => {
+      var data = {
+        nome: telefone,
+        email: telefone,
+        telefone: telefone
+      };
+ 
+      this.http.post(this.BASE_PATH + 'add', data)
+        .subscribe((result: any) => {
+          resolve(result.json());
+        },
+        (error) => {
+          reject(error.json());
+        });
+    });
+  }
 }

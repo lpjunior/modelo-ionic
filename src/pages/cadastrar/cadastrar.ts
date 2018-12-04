@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { WebserviceCorreiosProvider } from "../../providers/webservice-correios/webservice-correios";
+import { UserProvider } from "../../providers/user/user";
 
 /**
  * Generated class for the CadastrarPage page.
@@ -14,7 +15,8 @@ import { WebserviceCorreiosProvider } from "../../providers/webservice-correios/
   selector: 'page-cadastrar',
   templateUrl: 'cadastrar.html',
   providers: [
-    WebserviceCorreiosProvider
+    WebserviceCorreiosProvider,
+    UserProvider
   ]
 })
 export class CadastrarPage {
@@ -28,7 +30,7 @@ export class CadastrarPage {
   cidade:string;
   estado:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private wsCProvider: WebserviceCorreiosProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private wsCProvider: WebserviceCorreiosProvider, private usrPvr: UserProvider, private toast: ToastController) {
   }
 
   ionViewDidLoad() { }
@@ -51,7 +53,13 @@ export class CadastrarPage {
     }
   }
 
-  createAccount() {
-
+ createAccount() {
+    this.usrPvr.setUser(this.nome, this.email, this.telefone)
+      .then((result: any) => {
+        this.toast.create({ message: 'Usuário criado com sucesso. Token: ' + result.token, position: 'botton', duration: 3000 }).present();
+      })
+      .catch((error: any) => {
+        this.toast.create({ message: 'Erro ao criar o usuário. Erro: ' + error.error, position: 'botton', duration: 3000 }).present();
+      });
   }
 }
