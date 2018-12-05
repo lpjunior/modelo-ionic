@@ -9,7 +9,7 @@ export class UserProvider {
   constructor(public http: Http) { }
 
   getUserinfo(id:number) {
-    return this.http.get(this.BASE_PATH + 'id?' + id);
+    return this.http.get(this.BASE_PATH + '?id=' + id);
   }
 
   setUser(nome:string, email:string, telefone:string) {
@@ -23,6 +23,7 @@ export class UserProvider {
       this.http.post(this.BASE_PATH + 'add', data)
         .subscribe((result: any) => {
           resolve(result.json());
+          console.log(result.json());
         },
         (error) => {
           reject(error.json());
