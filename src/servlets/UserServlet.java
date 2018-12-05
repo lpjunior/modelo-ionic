@@ -1,11 +1,14 @@
 package servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
 
 import entity.User;
 
@@ -43,13 +46,12 @@ public class UserServlet extends HttpServlet {
 	private void registraUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User u = new User();
 		
-		u.setId(1);
-		u.setNome(request.getParameter("nome"));
-		u.setEmail(request.getParameter("email"));
-		u.setTelfone(request.getParameter("telefone"));
+		Gson gson = new Gson();
+		
+		u = gson.fromJson(request.getReader(), User.class);
+		System.out.println(u.toJSON());
 		
 		response.getWriter().append(u.toJSON());
-		System.out.println(u.toJSON());
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
