@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import entity.User;
+import service.UserDAOService;
 
-@WebServlet({"/users", "/users/id", "/users/add"})
+@WebServlet({"/users/", "/users/add"})
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,19 +22,15 @@ public class UserServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getServletPath().equals("/users/id")) {
+		if(request.getServletPath().equals("/users/")) {
 			mostraInfo(request, response);
 		}
 	}
 
 	private void mostraInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u = new User();
-		
-		u.setId(1);
-		u.setNome("Luis");
-		u.setEmail("prof.lpjunior@gmail.com");
-		u.setTelfone("(21) 96487-5646");
-		
+		int id = new Integer(request.getParameter("id"));
+
+		User u = new UserDAOService().buscaUser(id);
 		response.getWriter().append(u.toJSON());
 	}
 
@@ -44,14 +41,13 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private void registraUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User u = new User();
+		User u = new Gson().fromJson(request.getReader(), User.class);
 		
-		Gson gson = new Gson();
-		
-		u = gson.fromJson(request.getReader(), User.class);
-		System.out.println(u.toJSON());
-		
-		response.getWriter().append(u.toJSON());
+		if(new UserDAOService().gravarUser(u)) {
+			response.getWriter().append("200");	
+		} else {
+			response.getWriter().append("500");
+		}
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -16,6 +16,6 @@ public class BDConnect {
 	}
 	
 	protected Connection getConnection() throws SQLException {
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/dbws", "root", "");
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/wsdb", "root", "");
 	}
 }
