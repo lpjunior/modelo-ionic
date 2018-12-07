@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { WebserviceCorreiosProvider } from "../../providers/webservice-correios/webservice-correios";
 import { UserProvider } from "../../providers/user/user";
 
-/**
- * Generated class for the CadastrarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-cadastrar',

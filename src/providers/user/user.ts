@@ -5,11 +5,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserProvider {
 
-  private BASE_PATH = "http://localhost:8080/ws/users/";
+  private BASE_PATH = "http://localhost/ws/";
   constructor(public http: Http) { }
 
-  getUserinfo(id:number) {
-    return this.http.get(this.BASE_PATH + '?id=' + id);
+  getUserInfo(id:number) {
+    return this.http.get(this.BASE_PATH + 'index.php?id=' + id);
+  }
+
+  getUsersInfo() {
+    return this.http.get(this.BASE_PATH);
   }
 
   setUser(nome:string, email:string, telefone:string) {
@@ -21,7 +25,8 @@ export class UserProvider {
       };
  
       this.http.post(this.BASE_PATH + 'add', data)
-        .subscribe((result: any) => {
+        .subscribe(
+          (result: any) => {
           resolve(result.json());
           console.log(result.json());
         },

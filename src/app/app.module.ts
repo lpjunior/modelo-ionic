@@ -14,6 +14,8 @@ import { CadastrarPageModule } from "../pages/cadastrar/cadastrar.module";
 import { WebserviceCorreiosProvider } from '../providers/webservice-correios/webservice-correios';
 import { ListAddressesPageModule } from "../pages/list-addresses/list-addresses.module";
 import { UserProvider } from '../providers/user/user';
+import { ListUsersPageModule } from "../pages/list-users/list-users.module";
+import { ConfigProvider } from '../providers/config/config';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { UserProvider } from '../providers/user/user';
     HttpModule,
     TabsPageModule,
     CadastrarPageModule,
-    ListAddressesPageModule
+    ListAddressesPageModule,
+    ListUsersPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +42,8 @@ import { UserProvider } from '../providers/user/user';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WebserviceCorreiosProvider,
-    UserProvider
+    UserProvider,
+    ConfigProvider
   ]
 })
 export class AppModule {}

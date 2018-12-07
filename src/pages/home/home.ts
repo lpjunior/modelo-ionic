@@ -18,7 +18,7 @@ export class HomePage {
   }
 
   showInfo() {
-    this.usrPvr.getUserinfo(this.id).subscribe(
+    this.usrPvr.getUserInfo(this.id).subscribe(
       data=>{
         this.user = JSON.parse((data as any)._body);
       },
