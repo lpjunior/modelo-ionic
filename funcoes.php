@@ -8,6 +8,13 @@
     return false;
   }
 
+  function updateUser($id, $nome, $email, $telefone) {
+    if(fnUpdateUser($id, $nome, $email, $telefone)) {
+      return true;
+    }
+    return false;
+  }
+
   function getUsers() {
     if($users = fnListUsers()) {
       return $users;

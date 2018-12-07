@@ -59,3 +59,11 @@
 
     mysqli_query($link, $query);
   }
+
+  function fnUpdateUser($id, $nome, $email, $telefone) {
+    $link = getConnection();
+
+    $query = "update users set nome = '{$nome}', email = '{$email}', telefone = '{$telefone}' where id = {$id}";
+
+    mysqli_query($link, $query);
+  }
