@@ -10,7 +10,11 @@
     }
 
   } else if($_SERVER['REQUEST_METHOD'] === 'GET') {
-    echo json_encode(getUsers());
+    if(isset($_GET['id'])) {
+      echo json_encode(getUserById($_GET['id']));
+    } else {
+      echo json_encode(getUsers());
+    }
 
   } else if($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $user = json_decode(file_get_contents('php://input'), true);
