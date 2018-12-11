@@ -17,6 +17,13 @@ import { UserProvider } from '../providers/user/user';
 import { ListUsersPageModule } from "../pages/list-users/list-users.module";
 import { ConfigProvider } from '../providers/config/config';
 
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+
+import { UploadFotoPageModule } from "../pages/upload-foto/upload-foto.module";
+import { UploadImagemProvider } from '../providers/upload-imagem/upload-imagem';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +37,8 @@ import { ConfigProvider } from '../providers/config/config';
     TabsPageModule,
     CadastrarPageModule,
     ListAddressesPageModule,
-    ListUsersPageModule
+    ListUsersPageModule,
+    UploadFotoPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +51,11 @@ import { ConfigProvider } from '../providers/config/config';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WebserviceCorreiosProvider,
     UserProvider,
-    ConfigProvider
+    ConfigProvider,
+    FileTransfer,        
+    File,
+    Camera,
+    UploadImagemProvider,
   ]
 })
 export class AppModule {}

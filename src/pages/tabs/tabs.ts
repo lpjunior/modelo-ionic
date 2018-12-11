@@ -4,6 +4,7 @@ import { HomePage } from "../home/home";
 import { CadastrarPage } from "../cadastrar/cadastrar";
 import { ListAddressesPage } from "../list-addresses/list-addresses";
 import { ListUsersPage } from "../list-users/list-users";
+import { UploadFotoPage } from "../upload-foto/upload-foto";
 
 /**
  * Generated class for the TabsPage page.
@@ -22,12 +23,14 @@ export class TabsPage {
   tab2: any;
   tab3: any;
   tab4: any;
+  tab5: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.tab1 = HomePage;
     this.tab2 = CadastrarPage;
     this.tab3 = ListAddressesPage;
     this.tab4 = ListUsersPage;
+    this.tab5 = UploadFotoPage;
   }
 
   ionViewDidLoad() { }
