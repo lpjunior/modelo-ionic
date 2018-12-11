@@ -1,13 +1,15 @@
 <?php
   require('./funcoes.php');
+  require('./upload.php');
 
   if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user = json_decode(file_get_contents('php://input'), true);
+    uploadImg($_FILES['upload']);
+    /*$user = json_decode(file_get_contents('php://input'), true);
     if(setUser($user['nome'], $user['email'], $user['telefone'])) {
       echo '{"status":200}';
     } else {
       echo '{"status":500}';
-    }
+    }*/
 
   } else if($_SERVER['REQUEST_METHOD'] === 'GET') {
     if(isset($_GET['id'])) {
