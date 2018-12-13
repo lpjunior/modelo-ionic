@@ -8,11 +8,11 @@
   "proxies": [
     {
       "path": "/correios",
-      "proxyUrl": "https://viacep.com.br/ws/"
+      "proxyUrl": "https://viacep.com.br/ws"
     },
     {
       "path": "/ws",
-      "proxyUrl": "http://localhost/ws/"
+      "proxyUrl": "http://localhost/ws"
     }
   ]
 }

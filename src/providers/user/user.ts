@@ -1,19 +1,27 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class UserProvider {
 
-  private BASE_PATH = "http://localhost/ws/";
-  constructor(public http: Http) { }
+  private basePath = '/ws';
+
+  constructor(public http: Http, public plt: Platform) { 
+    // verifica se o projeot está rodando a partir de um device (windows, android, ios)
+    if(this.plt.is('cordova')) {
+      this.basePath = 'http://localhost/ws';
+    }
+  }
 
   getUserInfo(id:number) {
-    return this.http.get(this.BASE_PATH + 'index.php?id=' + id);
+    // interpolação de variáveis
+    return this.http.get(`${this.basePath}/index.php?id=${id}`);
   }
 
   getUsersInfo() {
-    return this.http.get(this.BASE_PATH);
+    return this.http.get(this.basePath);
   }
 
   setUser(nome:string, email:string, telefone:string) {
@@ -24,7 +32,7 @@ export class UserProvider {
         telefone: telefone
       };
  
-      this.http.post(this.BASE_PATH + 'add', data)
+      this.http.post(`${this.basePath}/add`, data)
         .subscribe(
           (result: any) => {
           resolve(result.json());
