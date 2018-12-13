@@ -5,4 +5,14 @@
   },
   "type": "ionic-angular",
   "id": "7dee66da"
-}
+},
+  "proxies": [
+    {
+      "path": "/correios/",
+      "proxyUrl": "https://viacep.com.br/ws/"
+    },
+    {
+      "path": "/ws/",
+      "proxyUrl": "http://localhost/ws/"
+    }
+  ]
