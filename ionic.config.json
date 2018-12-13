@@ -4,15 +4,15 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "id": "7dee66da"
-},
+  "id": "7dee66da",
   "proxies": [
     {
-      "path": "/correios/",
+      "path": "/correios",
       "proxyUrl": "https://viacep.com.br/ws/"
     },
     {
-      "path": "/ws/",
+      "path": "/ws",
       "proxyUrl": "http://localhost/ws/"
     }
   ]
+}
