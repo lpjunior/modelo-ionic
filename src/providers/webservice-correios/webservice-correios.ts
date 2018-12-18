@@ -9,7 +9,7 @@ export class WebserviceCorreiosProvider {
   private basePath = '/correios';
 
   constructor(public http: Http, public plt: Platform) { 
-    // verifica se o projeot está rodando a partir de um device (windows, android, ios)
+    // verifica se o projeto está rodando a partir de um device (windows, android, ios)
     if(this.plt.is('cordova')) {
       this.basePath = 'https://viacep.com.br/ws';
     }

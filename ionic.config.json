@@ -4,7 +4,7 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "id": "7dee66da",
+  "id": "app.modelo-ionic.com",
   "proxies": [
     {
       "path": "/correios",
